@@ -1,10 +1,9 @@
-import {createStore, combineReducers} from 'redux';
+import { createStore, combineReducers, applyMiddleware } from 'redux';
+import thunk from 'redux-thunk';
+import expensesReducer from '../reducers/expenses';
 
-export default () => {
-  const store = createStore(
-    combineReducers({
+export const rootReducer = combineReducers({
+  expenses: expensesReducer,
+});
 
-    })
-  )
-  return store
-}
+export const store = createStore(rootReducer, applyMiddleware(thunk));
